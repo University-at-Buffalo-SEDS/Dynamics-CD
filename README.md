@@ -2,6 +2,22 @@
 
 This is the firmware for the Dynamics Computer. Used for parachute drop tests.
 
+## Expected Use Case
+
+- Drop from building
+- Deploy FruityChuteTM Tender Descender
+- Deploy before hit ground
+
+## What is needed
+
+- [ ] Drop activation logic
+- [ ] BMI088 IMU
+- [ ] BMP390 BARO
+- [x] W25Q32 FLASH
+- [ ] Make a board variant for STM32G431
+
+*Board variants makes it so platformIO knows how to build and upload for the STM32G431 since we are using a bit of a custom design.
+
 ## Contributions
 
 To make contributions please fork the repo so that you have your own copy to modify.
