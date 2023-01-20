@@ -15,7 +15,7 @@ This is the firmware for the Dynamics Computer. Used for parachute drop tests.
 - [ ] BMP390 BARO
 - [x] W25Q32 FLASH
 - [ ] Using USB to output data
-- [ ] Make a board variant for STM32G431
+- [x] Make a board variant for STM32G431
 
 *Board variants makes it so platformIO knows how to build and upload for the STM32G431 since we are using a bit of a custom design.
 
