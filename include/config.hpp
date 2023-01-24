@@ -140,3 +140,8 @@ constexpr std::array<ChannelConfig, (size_t)Channel::Count> channel_config = {
 // Time to wait before testing pyrochannels
 #define TEST_FIRE_DELAY 2000
 #define TEST_FIRE_UPTIME 1000
+
+#define PIN_ACCEL_CS PB11
+#define PIN_GYRO_CS PB12
+#define PIN_BMP390_CS PB13
+#define PIN_FLASH_CS PB14
