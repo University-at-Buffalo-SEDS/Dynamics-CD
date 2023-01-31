@@ -131,28 +131,6 @@ void print_step()
 	baro_print();
 }
 
-// Currently disabled, add as a schedule.
-void buzzer() {
-	static int runs = 0;
-	static int counter = 0;
-
-	if (runs >= MAX_BUZZER_CYCLES) {
-		digitalWrite(PIN_BUZZER, LOW);
-		return;
-	}
-
-	if (counter < BUZZER_DUTY_ON) {
-		digitalWrite(PIN_BUZZER, HIGH);
-	} else {
-		digitalWrite(PIN_BUZZER, LOW);
-	}
-
-	counter = (counter + 1) % BUZZER_DUTY_TOT;
-	if (counter == 0) {
-		runs++;
-	}
-}
-
 void deployment_step()
 {
 	static uint32_t land_time = 0;
@@ -219,9 +197,6 @@ void deployment_step()
 			log_start();
 #endif
 			send_now = true;
-
-			// Turn buzzer off if we in  the launch phase
-			digitalWrite(PIN_BUZZER, LOW);
 		}
 	} else if (phase == FlightPhase::Launched) {
 		// Detect apogee

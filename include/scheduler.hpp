@@ -10,10 +10,7 @@ enum class TaskId : uint8_t {
 	Deployment,  // This should be first because the Kalman filter is fairly sensitive to delays.
 	ChannelTimeout,
 	Accel,
-	GpsRead,
-	Gps,
 	Baro,
-	PacketSync,
 	LogFlush,
 	Command,
 	Print,
