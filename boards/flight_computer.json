@@ -32,7 +32,7 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "Custom Board",
+  "name": "Flight Computer",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 131072,
