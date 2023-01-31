@@ -79,10 +79,17 @@
 // Number of milliseconds of log data write out from before launch is detected.
 #define PRELOG_MS 2000
 
-#define PIN_BUZZER     5
-#define PIN_ADXL345_CS 10
-#define PIN_BMP280_CS  9
-#define PIN_FLASH_CS   8
+
+// #define PIN_ACCEL_CS 	PB11
+// #define PIN_GYRO_CS 	PB12
+// #define PIN_BMP390_CS 	PB13
+// #define PIN_FLASH_CS 	PB14
+
+#define PIN_ACCEL_CS 	4
+#define PIN_GYRO_CS 	5
+#define PIN_BMP390_CS 	6
+#define PIN_FLASH_CS 	7
+
 // #define PIN_LAUNCH
 // #define PIN_BATT_V A0
 // #define PIN_SYS_V A1
@@ -96,12 +103,6 @@
 #define BUZZER_DUTY_OFF 25
 // Total period of a duty cycle
 #define BUZZER_DUTY_TOT (BUZZER_DUTY_ON + BUZZER_DUTY_OFF)
-
-// RGB LED
-#define LEDS_NUM  3
-#define LED_RED   16
-#define LED_GREEN 17
-#define LED_BLUE  18
   
 // How long to leave the fire channels active, in milliseconds
 #define CHANNEL_FIRE_TIME 1000
@@ -140,8 +141,3 @@ constexpr std::array<ChannelConfig, (size_t)Channel::Count> channel_config = {
 // Time to wait before testing pyrochannels
 #define TEST_FIRE_DELAY 2000
 #define TEST_FIRE_UPTIME 1000
-
-#define PIN_ACCEL_CS PB11
-#define PIN_GYRO_CS PB12
-#define PIN_BMP390_CS PB13
-#define PIN_FLASH_CS PB14
