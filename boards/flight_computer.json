@@ -3,7 +3,7 @@
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32G4xx -DSTM32G431xx -DARDUINO_GENERIC_G431C8TX",
-    "f_cpu": "170000000L",
+    "f_cpu": "150000000L",
     "mcu": "stm32g431c8t6",
     "product_line": "STM32G431xx",
     "variant": "G431C(6-8-B)T_G441CBT",
@@ -35,7 +35,7 @@
   "name": "Flight Computer",
   "upload": {
     "maximum_ram_size": 32768,
-    "maximum_size": 131072,
+    "maximum_size": 65536,
     "protocol": "stlink",
     "protocols": [
       "stlink",
