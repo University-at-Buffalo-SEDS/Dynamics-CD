@@ -153,7 +153,7 @@ void deployment_step()
 
 	float accel_mag = sqrtf(accel[0] * accel[0] + accel[1] * accel[1] + accel[2] * accel[2]);
 
-	if (phase < FlightPhase::Launched) {
+	if (phase < FlightPhase::Dropped) {
 		gravity_est_state.add(accel_mag);
 		ground_level_est_state.add(raw_alt);
 	}
@@ -178,18 +178,12 @@ void deployment_step()
 		}
 	}
 
-	// Skip kalman filter shortly after deployment to ignore
-	// the corresponding pressure/acceleration spikes.
-	if (!any_channel_firing) {
-		kf.step(accel_mag, alt);
-	}
-
 	if (phase == FlightPhase::Idle) {
 
 		// Detect launch
-		if (kf.rate() > LAUNCH_VELOCITY && kf.accel() > LAUNCH_ACCEL) {
+		if (kf.rate() > DROPPED_VELOCITY && kf.accel() > DROPPED_ACCEL) {
 			
-			phase = FlightPhase::Launched;
+			phase = FlightPhase::Dropped;
 #ifdef PIN_LAUNCH
 			digitalWrite(PIN_LAUNCH, HIGH);
 #endif
@@ -198,38 +192,7 @@ void deployment_step()
 #endif
 			send_now = true;
 		}
-	} else if (phase == FlightPhase::Launched) {
-		// Detect apogee
-		if (kf.rate() < 0) {
-			apogee = kf.pos();
-			channel_fire(Channel::Drogue);
-			
-			phase = FlightPhase::DescendingWithDrogue;
-
-			Serial.println(F("===================================== Apogee!"));
-			send_now = true;
-		}
-	} else if (phase == FlightPhase::DescendingWithDrogue) {
-		// If we've reached apogee we won't be going very fast and
-		// the barometer alone should be pretty reliable.
-
-		// Deploy main if we are at the right altitude or if the drogue
-		// fails to deploy and we're lawndarting.
-		// Wait at least three seconds after drogue deployment though,
-		// in case the pressure and acceleration of the deployment throws us off.
-		if ((kf.pos() < MAIN_DEPLOY_ALTITUDE
-#ifdef FAILSAFE_VELOCITY
-			|| kf.rate() < -(FAILSAFE_VELOCITY)
-#endif
-				) && delta(channel_status[(size_t)Channel::Drogue].fire_time, step_time) > 3000) {
-			
-			phase = FlightPhase::DescendingWithMain;
-			channel_fire(Channel::Main);
-
-			Serial.println(F("===================================== Deploy main!"));
-			send_now = true;
-		}
-	} else if (phase == FlightPhase::DescendingWithMain) {
+	} else if (phase == FlightPhase::Dropped) {
 		if (kf.pos() < LANDED_ALT &&
 				abs(kf.rate()) < LANDED_VELOCITY &&
 				abs(kf.accel()) < LANDED_ACCEL) {

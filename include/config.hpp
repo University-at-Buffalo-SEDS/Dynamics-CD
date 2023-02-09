@@ -15,8 +15,8 @@
 // when apogee is detected after a launch event).  Velocity and
 // acceleration must be greater than both of these for a launch
 // event to be detected.
-#define LAUNCH_VELOCITY 8
-#define LAUNCH_ACCEL 20
+#define DROPPED_VELOCITY -4
+#define DROPPED_ACCEL -10
 
 // Altitude and velocity and acceleration below which landing will
 // be detected.  Acceleration is comphensated for gravity.
@@ -26,7 +26,7 @@
 #define LANDED_ALT 30
 #define LANDED_VELOCITY 2
 #define LANDED_ACCEL 1
-#define LANDED_TIME_MS 5000
+#define LANDED_TIME_MS 10000
 
 // If the downward velocity goes above this value after drogue
 // deployment then the main will deploy.  This is a failsafe
@@ -80,15 +80,15 @@
 #define PRELOG_MS 2000
 
 
-// #define PIN_ACCEL_CS 	PB11
-// #define PIN_GYRO_CS 	PB12
-// #define PIN_BMP390_CS 	PB13
-// #define PIN_FLASH_CS 	PB14
+#define PIN_ACCEL_CS 	PB11
+#define PIN_GYRO_CS 	PB12
+#define PIN_BMP390_CS 	PB13
+#define PIN_FLASH_CS 	PB14
 
-#define PIN_ACCEL_CS 	4
-#define PIN_GYRO_CS 	5
-#define PIN_BMP390_CS 	6
-#define PIN_FLASH_CS 	7
+// #define PIN_ACCEL_CS 	4
+// #define PIN_GYRO_CS 	5
+// #define PIN_BMP390_CS 	6
+// #define PIN_FLASH_CS 	7
 
 // #define PIN_LAUNCH
 // #define PIN_BATT_V A0
