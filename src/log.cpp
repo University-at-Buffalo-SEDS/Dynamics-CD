@@ -100,14 +100,14 @@ static void log_step()
 void log_add(const LogMessage &data)
 {
 	if (!log_buf.push(data, true) && write_enabled) {
-		Serial.println("Log buffer overflow!");
+		// Serial.println("Log buffer overflow!");
 	}
 }
 
 void log_print_all()
 {
 	if (write_enabled) {
-		Serial.println("Cannot read while in flight!");
+		// Serial.println("Cannot read while in flight!");
 		return;
 	}
 
@@ -116,7 +116,7 @@ void log_print_all()
 	for (size_t flight_i = 0; flight_i < FLIGHT_FLASH_FLIGHTS; ++flight_i) {
 		uint8_t flight = wrapping_add(first_flight, flight_i, FLIGHT_FLASH_FLIGHTS);
 		log_print_flight(flight);
-		Serial.println("---");
+		// Serial.println("---");
 	}
 }
 
@@ -132,7 +132,7 @@ static void log_print_flight(size_t flight)
 		flash_read(flight_addr + page_i, page);
 
 		if (!read_buf.push(page, FLIGHT_FLASH_PAGE_SIZE, false)) {
-			Serial.println("Read buffer error.");
+			// Serial.println("Read buffer error.");
 			break;
 		}
 
@@ -156,37 +156,37 @@ static void log_print_flight(size_t flight)
 
 static void log_print_msg(const LogMessage &msg)
 {
-	Serial.print(msg.time_ms);
-	Serial.print(',');
+	// Serial.print(msg.time_ms);
+	// Serial.print(',');
 	// Position
-	Serial.print(msg.state(0));
-	Serial.print(',');
+	// Serial.print(msg.state(0));
+	// Serial.print(',');
 	// Velocity
-	Serial.print(msg.state(1));
-	Serial.print(',');
+	// Serial.print(msg.state(1));
+	// Serial.print(',');
 	// Acceleration
-	Serial.print(msg.state(2));
-	Serial.print(',');
-	Serial.print(msg.temp);
-	Serial.print(',');
-	Serial.print(msg.pressure);
-	Serial.print(',');
-	Serial.print(msg.altitude);
-	Serial.print(',');
-	Serial.print(msg.accel_x);
-	Serial.print(',');
-	Serial.print(msg.accel_y);
-	Serial.print(',');
-	Serial.print(msg.accel_z);
-	Serial.print(',');
-	Serial.print(msg.lat, 6);
-	Serial.print(',');
-	Serial.print(msg.lon, 6);
-	Serial.print(',');
-	Serial.print(msg.gps_alt);
-	Serial.print(',');
-	Serial.print(msg.batt_v);
-	Serial.print(',');
-	Serial.print(msg.sys_v);
-	Serial.println();
+	// Serial.print(msg.state(2));
+	// Serial.print(',');
+	// Serial.print(msg.temp);
+	// Serial.print(',');
+	// Serial.print(msg.pressure);
+	// Serial.print(',');
+	// Serial.print(msg.altitude);
+	// Serial.print(',');
+	// Serial.print(msg.accel_x);
+	// Serial.print(',');
+	// Serial.print(msg.accel_y);
+	// Serial.print(',');
+	// Serial.print(msg.accel_z);
+	// Serial.print(',');
+	// Serial.print(msg.gyro_x);
+	// Serial.print(',');
+	// Serial.print(msg.gyro_y);
+	// Serial.print(',');
+	// Serial.print(msg.gyro_z);
+	// Serial.print(',');
+	// Serial.print(msg.batt_v);
+	// Serial.print(',');
+	// Serial.print(msg.sys_v);
+	// Serial.println();
 }

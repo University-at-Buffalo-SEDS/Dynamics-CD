@@ -137,10 +137,10 @@ void baro_setup()
 	digitalWrite(PIN_BMP280_CS, HIGH);
 
 	if (read8(REG_CHIPID) != BMP280_CHIPID) {
-		Serial.println(F("Failed to set up BMP280!"));
+		// Serial.println(F("Failed to set up BMP280!"));
 		abort();
 	} else {
-		Serial.println(F("BMP280 detected."));
+		// Serial.println(F("BMP280 detected."));
 	}
 
 	read_buf(REG_CALIB_START, (uint8_t*)&calib, 24);
@@ -168,11 +168,11 @@ int16_t baro_get_temp()
 
 void baro_print()
 {
-	Serial.print(F("Altitude: "));
-	Serial.print(last_alt);
-	Serial.println('m');
+	// Serial.print(F("Altitude: "));
+	// Serial.print(last_alt);
+	// Serial.println('m');
 
-	Serial.print(F("Pressure: "));
-	Serial.print(last_press);
-	Serial.println("Pa");
+	// Serial.print(F("Pressure: "));
+	// Serial.print(last_press);
+	// Serial.println("Pa");
 }

@@ -13,25 +13,25 @@ void test_pyrochannels() {
 		digitalWrite(c.fire_pin, LOW);
 	}
 
-    Serial.println("Channel pins set to low. Waiting to fire.");
+    // Serial.println("Channel pins set to low. Waiting to fire.");
     // delay(TEST_FIRE_DELAY);
 
 	for (size_t i = 0; i < 2; ++i) {
 		const ChannelConfig &config = channel_config[i];
 
-		Serial.println("Channel pins set to low. Waiting to fire.");
+		// Serial.println("Channel pins set to low. Waiting to fire.");
    		delay(TEST_FIRE_DELAY);
 
 		digitalWrite(config.fire_pin, HIGH);
 
-		Serial.print("Fired ");
-		Serial.println(config.fire_pin);
+		// Serial.print("Fired ");
+		// Serial.println(config.fire_pin);
     	delay(TEST_FIRE_UPTIME);
 
 		digitalWrite(config.fire_pin, LOW);
 	}
 
-    Serial.println("Test complete. Pins set to low.");
+    // Serial.println("Test complete. Pins set to low.");
 }
 
 int main() {

@@ -71,39 +71,39 @@ void KalmanFilter::calculate_gain(kfloat_t alt_sigma, kfloat_t accel_sigma, kflo
 	}
 
 	DEBUG_SECTION(
-		Serial.println(F("Input noise values used (standard deviation):"));
-		Serial.print(F("Altitude       - "));
-		Serial.print(sqrtf(alt_variance));
-		Serial.println(F("m"));
-		Serial.print(F("Acceleration   - "));
-		Serial.print(sqrtf(accel_variance));
-		Serial.println(F("m/s^2"));
-		Serial.print(F("Model noise    - "));
-		Serial.print(sqrtf(model_variance));
-		Serial.println(F("m/s^2"));
-		Serial.print(F("Kalman gains converged after "));
-		Serial.print(iterations);
-		Serial.println(F(" iterations:"));
+		// Serial.println(F("Input noise values used (standard deviation):"));
+		// Serial.print(F("Altitude       - "));
+		// Serial.print(sqrtf(alt_variance));
+		// Serial.println(F("m"));
+		// Serial.print(F("Acceleration   - "));
+		// Serial.print(sqrtf(accel_variance));
+		// Serial.println(F("m/s^2"));
+		// Serial.print(F("Model noise    - "));
+		// Serial.print(sqrtf(model_variance));
+		// Serial.println(F("m/s^2"));
+		// Serial.print(F("Kalman gains converged after "));
+		// Serial.print(iterations);
+		// Serial.println(F(" iterations:"));
 		for (uint8_t i = 0; i < 3; i++) {
 			for (uint8_t j = 0; j < 2; j++) {
-				Serial.print(kgain(i, j));
+				// Serial.print(kgain(i, j));
 				if (i < 2 || j < 1)
-					Serial.print(", ");
+					// Serial.print(", ");
 			}
 		}
-		Serial.println(F("\n"));
-		Serial.println(F("Estimated output first order statistics (standard deviation):"));
-		Serial.print(F("Altitude     - "));
-		Serial.print(sqrtf(pest[0][0]));
-		Serial.println(F("m"));
-		Serial.print(F("Velocity     - "));
-		Serial.print(sqrtf(pest[1][1]));
-		Serial.println(F("m/s"));
-		Serial.print(F("Acceleration - "));
-		Serial.print(sqrtf(pest[2][2]));
-		Serial.println(F("m/s^2"));
+		// Serial.println(F("\n"));
+		// Serial.println(F("Estimated output first order statistics (standard deviation):"));
+		// Serial.print(F("Altitude     - "));
+		// Serial.print(sqrtf(pest[0][0]));
+		// Serial.println(F("m"));
+		// Serial.print(F("Velocity     - "));
+		// Serial.print(sqrtf(pest[1][1]));
+		// Serial.println(F("m/s"));
+		// Serial.print(F("Acceleration - "));
+		// Serial.print(sqrtf(pest[2][2]));
+		// Serial.println(F("m/s^2"));
 		// Output header for data.
-		Serial.println(F("Time		Pressure	Acceleration	Est Pos		Est Rate	Est Accel"));
+		// Serial.println(F("Time		Pressure	Acceleration	Est Pos		Est Rate	Est Accel"));
 	)
 }
 
@@ -149,19 +149,19 @@ void KalmanFilter::step(kfloat_t accel, kfloat_t altitude)
 	// Output
 	DEBUG_SECTION(
 		static uint32_t last_run = micros();
-		Serial.print(millis());
-		Serial.print('\t');
-		Serial.print(sdelta(last_run, micros()));
-		Serial.print('\t');
-		Serial.print(altitude);
-		Serial.print('\t');
-		Serial.print(accel);
-		Serial.print('\t');
-		Serial.print(est(0));
-		Serial.print('\t');
-		Serial.print(est(1));
-		Serial.print('\t');
-		Serial.println(est(2));
+		// Serial.print(millis());
+		// Serial.print('\t');
+		// Serial.print(sdelta(last_run, micros()));
+		// Serial.print('\t');
+		// Serial.print(altitude);
+		// Serial.print('\t');
+		// Serial.print(accel);
+		// Serial.print('\t');
+		// Serial.print(est(0));
+		// Serial.print('\t');
+		// Serial.print(est(1));
+		// Serial.print('\t');
+		// Serial.println(est(2));
 		last_run = micros();
 	)
 }

@@ -11,6 +11,9 @@
 
 #define LOG_ENABLE 0
 
+// Used with ARM processors and if they support SWD
+#define SWO_PRINTF 1
+
 // Rates which trigger a launch event (deployment will only occur
 // when apogee is detected after a launch event).  Velocity and
 // acceleration must be greater than both of these for a launch
@@ -85,10 +88,8 @@
 #define PIN_BMP390_CS 	PB13
 #define PIN_FLASH_CS 	PB14
 
-// #define PIN_ACCEL_CS 	4
-// #define PIN_GYRO_CS 	5
-// #define PIN_BMP390_CS 	6
-// #define PIN_FLASH_CS 	7
+#define PIN_ADXL345_CS 	4
+#define PIN_BMP280_CS 	5
 
 // #define PIN_LAUNCH
 // #define PIN_BATT_V A0

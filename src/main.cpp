@@ -61,8 +61,8 @@ void setup()
 	SPI.begin();
 
 	// gps_setup();
-	baro_setup();
-	accel_setup();
+	// baro_setup();
+	// accel_setup();
 #if LOG_ENABLE
 	log_setup();
 #endif
@@ -233,9 +233,6 @@ void deployment_step()
 		accel[0],
 		accel[1],
 		accel[2],
-		gps_get_lat(),
-		gps_get_lon(),
-		gps_get_alt(),
 		baro_get_temp(),
 		baro_get_pressure(),
 		(uint16_t)batt_v,

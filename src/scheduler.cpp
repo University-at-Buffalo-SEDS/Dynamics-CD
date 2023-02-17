@@ -12,28 +12,28 @@ void scheduler_add(TaskId tid, const Task &task)
 
 static void run_task(uint32_t sched_start, uint32_t time_since_last_run, Task *task, uint8_t task_id) {
 	uint32_t task_start = micros();
-	// Serial.print("Running task: ");
+	// // Serial.print("Running task: ");
 	
 	task->callback();
-	// Serial.println("Done");
+	// // Serial.println("Done");
 	uint32_t task_time = delta(task_start, micros());
 
 	// Warn if any individual task takes too long.
 	uint32_t max_time = (task->time_requirement_us != 0) ? task->time_requirement_us : 200;
 	if (task_time > max_time) {
-		Serial.print(F("Slow task "));
-		Serial.print(task_id);
-		Serial.print(": ");
-		Serial.println(task_time);
+		// Serial.print(F("Slow task "));
+		// Serial.print(task_id);
+		// Serial.print(": ");
+		// Serial.println(task_time);
 	}
 
 	// Print a warning if we start running more than 1ms behind.
 	// Ignore this on the first run though.
 	if (time_since_last_run > task->period_us + 1000 && task->last_run_us > 0) {
-		Serial.print(F("Scheduling overrun: "));
-		Serial.print(task_id);
-		Serial.print(':');
-		Serial.println(time_since_last_run - task->period_us);
+		// Serial.print(F("Scheduling overrun: "));
+		// Serial.print(task_id);
+		// Serial.print(':');
+		// Serial.println(time_since_last_run - task->period_us);
 	}
 
 	task->last_run_us = sched_start;

@@ -61,11 +61,11 @@ void flash_setup()
 	spi_end();
 
 	if (device_id != W25Q32JV_DEVICE_ID) {
-		Serial.println(device_id);
-		Serial.println(F("Failed to set up flash!"));
+		// Serial.println(device_id);
+		// Serial.println(F("Failed to set up flash!"));
 		abort();
 	} else {
-		Serial.println(F("Flash detected."));
+		// Serial.println(F("Flash detected."));
 	}
 }
 
